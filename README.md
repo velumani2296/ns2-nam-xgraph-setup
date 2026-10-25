@@ -37,7 +37,7 @@ This guide covers the following tools:
 
 Before starting, make sure you have:
 
-- Ubuntu 22.04 LTS (64-bit recommended).
+- Ubuntu 22.04 LTS or 24.04 LTS (64-bit recommended).
 - An active internet connection.
 - Sudo privileges.
 - Basic knowledge of Linux terminal commands.
@@ -60,10 +60,10 @@ sudo apt update
 sudo apt install ns2 -y
 ```
 
-### Step 4: Install NAM and Gedit
+### Step 4: Install NAM
 
 ```bash
-sudo apt install nam gedit -y
+sudo sudo apt-get install nam
 ```
 
 ### Step 5: Install Tcl
@@ -92,7 +92,7 @@ Type the following command to exit:
 exit
 ```
 
-## 2. Install NAM on Ubuntu 22.04
+## 2. Install NAM on Ubuntu 22.04 or 24.04
 
 NAM (Network Animator) is used to visualize network simulations, including nodes, links, and packet movements.
 
@@ -130,7 +130,7 @@ If the graphical window opens, NAM is working.
 
 **Note:** The supplied Debian package is a third-party package. Compatibility with Ubuntu 22.04 may vary. If NAM does not launch, check the terminal output for missing libraries or other errors.
 
-## 3. Install AWK on Ubuntu 22.04
+## 3. Install AWK on Ubuntu 22.04 or 24.04
 
 AWK is a text-processing utility commonly used to analyze NS2 trace files and extract simulation statistics.
 
@@ -160,7 +160,7 @@ GNU Awk 5.1.0
 
 The installed version may differ depending on your Ubuntu updates.
 
-## 4. Install XGraph on Ubuntu 22.04
+## 4. Install XGraph on Ubuntu 22.04 or 24.04
 
 XGraph is a graph plotting utility used in some NS2 laboratory experiments to visualize simulation results.
 
@@ -170,7 +170,7 @@ On newer Linux versions, traditional XGraph installation methods may not work. T
 
 Open the following GitHub repository:
 
-[NS2 Tutorials and XGraph Files](https://github.com/Arose-Niazi/Tutorials/tree/master/NS2)
+[NS2 Tutorials and XGraph Files](https://github.com/velumani2296/ns2-nam-xgraph-setup/tree/main/xgraph)
 
 Download the `xgraph.tar` file and save it in your **Downloads** folder.
 
