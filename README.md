@@ -1,6 +1,8 @@
 # NS2 Installation Guide on Ubuntu 22.04
 
-A step-by-step guide to installing and configuring **NS2 (Network Simulator 2), NAM (Network Animator), AWK, and XGraph** on Ubuntu 22.04 for Computer Networks laboratory experiments.
+A step-by-step guide to installing and configuring **NS2, NAM, AWK, and XGraph** on Ubuntu 22.04 for Computer Networks laboratory experiments.
+
+This repository provides installation commands, configuration instructions, a sample NS2 simulation, and troubleshooting tips to help students set up their network simulation environment.
 
 ## 📌 Table of Contents
 
@@ -12,59 +14,67 @@ A step-by-step guide to installing and configuring **NS2 (Network Simulator 2), 
 - [4. Install XGraph](#4-install-xgraph)
 - [5. Verify the Installation](#5-verify-the-installation)
 - [6. Run an NS2 Simulation](#6-run-an-ns2-simulation)
+- [7. Troubleshooting](#7-troubleshooting)
 - [Useful Resources](#useful-resources)
-- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
 
 ## 📖 Introduction
 
-NS2 is a discrete-event network simulator used for studying and analyzing computer networks. It supports simulation of network protocols, traffic behavior, routing algorithms, and network performance.
+NS2 (Network Simulator 2) is a discrete-event network simulator used for studying and analyzing computer networks. It supports the simulation of network protocols, routing algorithms, traffic behavior, and network performance.
 
-This guide covers the installation of the following tools:
+This guide covers the following tools:
 
 | Tool | Purpose |
 |---|---|
-| NS2 | Network simulation |
-| NAM | Visualization of network simulations |
-| AWK | Processing simulation trace files |
-| XGraph | Plotting simulation results and graphs |
-| Gedit | Text editor for writing TCL scripts |
+| NS2 | Simulating computer networks |
+| NAM | Visualizing network simulations |
+| AWK | Processing NS2 trace files |
+| XGraph | Plotting simulation results |
+| Gedit | Editing TCL simulation scripts |
+| Tcl | Scripting language used by NS2 |
 
 ## 💻 Prerequisites
 
-- Ubuntu 22.04 LTS (64-bit recommended)
-- Internet connection
-- Sudo privileges
-- Basic knowledge of Linux terminal commands
+Before starting, make sure you have:
+
+- Ubuntu 22.04 LTS (64-bit recommended).
+- An active internet connection.
+- Sudo privileges.
+- Basic knowledge of Linux terminal commands.
 
 ## 1. Install NS2
 
-Open the Terminal using `Ctrl + Alt + T`.
+### Step 1: Open the terminal
 
-### Step 1: Update package lists
+Press `Ctrl + Alt + T` to open the terminal.
+
+### Step 2: Update package lists
 
 ```bash
 sudo apt update
 ```
 
-### Step 2: Install NS2
+### Step 3: Install NS2
 
 ```bash
 sudo apt install ns2 -y
 ```
 
-### Step 3: Install NAM and Gedit
+### Step 4: Install NAM and Gedit
 
 ```bash
 sudo apt install nam gedit -y
 ```
 
-### Step 4: Install Tcl
+### Step 5: Install Tcl
 
 ```bash
 sudo apt install tcl -y
 ```
 
-### Step 5: Verify NS2
+### Step 6: Verify NS2
+
+Run the following command:
 
 ```bash
 ns
@@ -76,17 +86,21 @@ If NS2 is installed correctly, the Tcl interpreter prompt should appear:
 %
 ```
 
-Type `exit` to return to the terminal.
+Type the following command to exit:
 
-## 2. Install NAM
+```tcl
+exit
+```
+
+## 2. Install NAM on Ubuntu 22.04
 
 NAM (Network Animator) is used to visualize network simulations, including nodes, links, and packet movements.
 
-On Ubuntu 22.04, the NAM package available through the default repositories may not work in every environment. If you need the provided Debian package, follow these steps.
+If the default Ubuntu package does not work in your environment, you can try the provided Debian package.
 
 ### Step 1: Download the NAM package
 
-Download the Debian package from the following link:
+Download the NAM 1.14 Debian package from the link below:
 
 [Download NAM 1.14 for Ubuntu](https://drive.google.com/file/d/0B7S255p3kFXNNmtLeXhsaG5hXzQ/edit?resourcekey=0-NJmLwKSqlXCAjXSHr6ILiA)
 
@@ -104,7 +118,7 @@ Make sure the downloaded file is named `nam_1.14_amd64.deb`, then run:
 sudo apt install ./nam_1.14_amd64.deb
 ```
 
-If the filename differs, replace it with the actual downloaded filename.
+If the filename is different, replace it with the actual filename.
 
 ### Step 4: Launch NAM
 
@@ -112,13 +126,13 @@ If the filename differs, replace it with the actual downloaded filename.
 nam
 ```
 
-If the NAM graphical window opens, the installation is working.
+If the graphical window opens, NAM is working.
 
-**Note:** The downloaded package is third-party software. Check its compatibility and source before installing it. If NAM fails to launch, see the troubleshooting section.
+**Note:** The supplied Debian package is a third-party package. Compatibility with Ubuntu 22.04 may vary. If NAM does not launch, check the terminal output for missing libraries or other errors.
 
-## 3. Install AWK
+## 3. Install AWK on Ubuntu 22.04
 
-AWK is a text-processing utility commonly used to extract and analyze information from NS2 trace files.
+AWK is a text-processing utility commonly used to analyze NS2 trace files and extract simulation statistics.
 
 ### Step 1: Update package lists
 
@@ -144,21 +158,99 @@ Example output:
 GNU Awk 5.1.0
 ```
 
-The version displayed on your system may differ depending on package updates.
+The installed version may differ depending on your Ubuntu updates.
 
-## 4. Install XGraph
+## 4. Install XGraph on Ubuntu 22.04
 
-XGraph is a plotting utility used in some NS2 laboratory experiments to display simulation results graphically.
+XGraph is a graph plotting utility used in some NS2 laboratory experiments to visualize simulation results.
 
-Follow this tutorial for installation instructions:
+On newer Linux versions, traditional XGraph installation methods may not work. The following steps use the `xgraph` executable provided with the NS2 tutorial files.
 
-- [XGraph Installation Tutorial on YouTube](https://www.youtube.com/watch?v=qt9NkCi9ZRI)
+### Step 1: Download XGraph
 
-Additional NS2 resources and examples:
+Open the following GitHub repository:
 
-- [NS2 Tutorials on GitHub](https://github.com/Arose-Niazi/Tutorials/tree/master/NS2)
+[NS2 Tutorials and XGraph Files](https://github.com/Arose-Niazi/Tutorials/tree/master/NS2)
 
-**Note:** XGraph may require additional configuration or dependencies on Ubuntu 22.04. Follow the tutorial carefully and verify that the installation method is compatible with your system.
+Download the `xgraph.tar` file and save it in your **Downloads** folder.
+
+### Step 2: Open the Downloads directory
+
+Open the terminal and run:
+
+```bash
+cd ~/Downloads
+```
+
+### Step 3: Update package lists
+
+```bash
+sudo apt-get update
+```
+
+### Step 4: Extract the XGraph archive
+
+```bash
+tar -xvf xgraph.tar
+```
+
+After extraction, make sure the file named `xgraph` is available in the current directory.
+
+If the archive extracts into a subfolder, navigate to that folder before proceeding.
+
+### Step 5: Copy XGraph to `/bin`
+
+Run the following command:
+
+```bash
+sudo cp xgraph /bin/xgraph
+```
+
+This copies the XGraph executable to `/bin`.
+
+### Step 6: Set executable permissions
+
+```bash
+sudo chmod 755 /bin/xgraph
+```
+
+The `755` permission allows the owner to read, write, and execute the file while other users can read and execute it.
+
+**Security note:** Avoid using `chmod 777` because it unnecessarily allows every user to modify the executable.
+
+### Step 7: Verify XGraph
+
+Run:
+
+```bash
+xgraph
+```
+
+If XGraph requires input files or displays an error, inspect the terminal output and check the executable's compatibility with Ubuntu 22.04.
+
+You can inspect the executable using:
+
+```bash
+file /bin/xgraph
+```
+
+### Step 8: Use XGraph in an NS2 TCL script
+
+You can call XGraph from a TCL script to plot simulation output files:
+
+```tcl
+exec xgraph out0.tr out1.tr &
+```
+
+Replace `out0.tr` and `out1.tr` with the actual filenames generated by your experiment.
+
+### Important XGraph notes
+
+- Avoid adding `-geometry` options to your TCL command when using this provided XGraph executable, as they may cause compatibility issues.
+- Keep a copy of the `xgraph` executable in the same folder as your TCL files if you want it readily accessible for lab work.
+- If you keep the executable only in the current directory, invoke it as `./xgraph` rather than `xgraph`, unless that directory is included in your `PATH`.
+- Make sure the input files exist and contain valid graph data before running XGraph.
+- If XGraph does not launch, inspect the terminal errors and verify that the executable is compatible with your system.
 
 ## 5. Verify the Installation
 
@@ -192,7 +284,7 @@ awk --version
 tclsh
 ```
 
-Type `exit` to close the Tcl interpreter.
+Type `exit` to close the interpreter.
 
 ### Check Gedit
 
@@ -200,13 +292,21 @@ Type `exit` to close the Tcl interpreter.
 gedit
 ```
 
-If the corresponding command works, the tool is available. XGraph should also be tested using a valid graph data file.
+### Check XGraph
+
+```bash
+xgraph
+```
+
+XGraph should be tested with a valid graph data file if it requires input.
 
 ## 6. Run an NS2 Simulation
 
-Follow these steps to test a simple two-node network simulation.
+Follow the steps below to test a simple two-node network simulation.
 
 ### Step 1: Create a TCL file
+
+Create a new file using Gedit:
 
 ```bash
 gedit lab1.tcl
@@ -245,11 +345,11 @@ $ns at 5.0 "finish"
 $ns run
 ```
 
-Save the file and close the editor.
+Save the file and close Gedit.
 
 ### Step 2: Execute the simulation
 
-Navigate to the directory containing `lab1.tcl` and run:
+Navigate to the folder containing `lab1.tcl` and execute:
 
 ```bash
 ns lab1.tcl
@@ -257,20 +357,26 @@ ns lab1.tcl
 
 If NS2 and NAM are configured correctly, a NAM window should open displaying two nodes connected by a link.
 
-**Expected result:** A network animation window showing two nodes and their connecting link.
+### Expected result
+
+- Two nodes connected by a duplex link.
+- A NAM animation window.
+- A simulation that finishes after 5 seconds of simulated time.
+
+**Note:** This example generates a NAM trace for visualization. It does not generate the `out0.tr` and `out1.tr` files required by the XGraph example. Those files must be generated separately by a simulation designed to produce graph data.
 
 ## 7. Troubleshooting
 
-### Problem: `ns: command not found`
+### Problem 1: `ns: command not found`
 
-Install NS2 again and check the installation:
+Install NS2:
 
 ```bash
 sudo apt update
 sudo apt install ns2 -y
 ```
 
-### Problem: `nam: command not found`
+### Problem 2: `nam: command not found`
 
 Check whether NAM is installed:
 
@@ -278,29 +384,35 @@ Check whether NAM is installed:
 dpkg -l | grep nam
 ```
 
-If necessary, reinstall the package using the correct Debian package filename.
+If necessary, install the package again using the correct Debian package filename.
 
-### Problem: NAM does not open
+### Problem 3: NAM does not open
 
-Try launching NAM from the terminal:
+Run NAM from the terminal:
 
 ```bash
 nam
 ```
 
-Read any error messages displayed. Older NAM builds may encounter compatibility issues with newer Linux libraries or graphical environments.
+Check the displayed errors. Older NAM builds may have compatibility issues with newer Linux libraries or graphical environments.
 
-### Problem: NS2 runs, but NAM animation is not displayed
+### Problem 4: NAM animation does not appear
 
-Check that the TCL script generates a NAM trace file:
+Check whether the NAM trace file exists:
 
 ```bash
 ls -l lab1.nam
 ```
 
-Run the script again and inspect any errors printed in the terminal.
+Then rerun the TCL script:
 
-### Problem: `awk` is not installed
+```bash
+ns lab1.tcl
+```
+
+Resolve any errors displayed in the terminal.
+
+### Problem 5: `awk` is not installed
 
 Install GNU AWK:
 
@@ -308,30 +420,70 @@ Install GNU AWK:
 sudo apt install gawk -y
 ```
 
+### Problem 6: XGraph command is not found
+
+Check the executable:
+
+```bash
+ls -l /bin/xgraph
+```
+
+If the file is missing, repeat the extraction and copy steps in the XGraph installation section.
+
+### Problem 7: XGraph does not launch
+
+Inspect the executable:
+
+```bash
+file /bin/xgraph
+```
+
+Make sure the executable is compatible with your operating system and that any required graphical libraries are available.
+
+### Problem 8: XGraph cannot find input files
+
+Check that the files exist in the current working directory:
+
+```bash
+ls -l out0.tr out1.tr
+```
+
+Replace these filenames with the actual files generated by your simulation.
+
 ## 📚 Useful Resources
 
-1. [NAM 1.14 Debian Package](https://drive.google.com/file/d/0B7S255p3kFXNNmtLeXhsaG5hXzQ/edit?resourcekey=0-NJmLwKSqlXCAjXSHr6ILiA)
-2. [XGraph Installation Tutorial](https://www.youtube.com/watch?v=qt9NkCi9ZRI)
-3. [NS2 Tutorials and Examples](https://github.com/Arose-Niazi/Tutorials/tree/master/NS2)
+1. **NAM 1.14 Debian Package:** [Download NAM](https://drive.google.com/file/d/0B7S255p3kFXNNmtLeXhsaG5hXzQ/edit?resourcekey=0-NJmLwKSqlXCAjXSHr6ILiA)
+2. **XGraph Installation Tutorial:** [Watch on YouTube](https://www.youtube.com/watch?v=qt9NkCi9ZRI)
+3. **NS2 Tutorials and Examples:** [Explore on GitHub](https://github.com/Arose-Niazi/Tutorials/tree/master/NS2)
 
 ## 🎯 Learning Objectives
 
 After completing this guide, you should be able to:
 
-- Install NS2 on Ubuntu 22.04.
-- Configure NAM for network animation.
-- Install and use AWK for trace-file analysis.
-- Set up XGraph for plotting simulation results.
-- Create and execute basic TCL simulation scripts.
-- Troubleshoot common NS2 installation problems.
+- Install and run NS2 on Ubuntu 22.04.
+- Install and test NAM for network animation.
+- Install AWK for processing NS2 trace files.
+- Configure XGraph for plotting simulation data.
+- Write and execute basic TCL simulation scripts.
+- Identify and troubleshoot common installation problems.
 
 ## 🤝 Contributing
 
-Suggestions, corrections, and improvements are welcome. Feel free to open an issue or submit a pull request to improve this guide.
+Suggestions, corrections, and improvements are welcome.
+
+If you find an issue or have a better installation method:
+
+1. Open an issue in this repository.
+2. Describe the problem and include relevant terminal errors.
+3. Submit a pull request with your improvements.
+
+Contributions that improve compatibility with newer Ubuntu versions are especially welcome.
 
 ## 📄 License
 
-This repository is intended for educational purposes. Add a suitable open-source license, such as the MIT License, if you want others to reuse and modify your original content under its terms.
+This repository is intended for educational purposes.
+
+Consider adding an open-source license, such as the MIT License, if you want others to reuse and modify your original content under its terms. Ensure that third-party files and resources are distributed according to their respective licenses.
 
 ---
 
