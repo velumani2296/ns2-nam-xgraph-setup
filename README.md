@@ -191,7 +191,7 @@ After extraction, make sure the file named `xgraph` is available in the current 
 
 If the archive extracts into a subfolder, navigate to that folder before proceeding.
 
-### Step 5: Copy XGraph to `/bin`
+### Step 4: Copy XGraph to `/bin`
 
 Run the following command:
 
@@ -201,7 +201,7 @@ sudo cp xgraph /bin/xgraph
 
 This copies the XGraph executable to `/bin`.
 
-### Step 6: Set executable permissions
+### Step 5: Set executable permissions
 
 ```bash
 sudo chmod 755 /bin/xgraph
@@ -211,7 +211,7 @@ The `755` permission allows the owner to read, write, and execute the file while
 
 **Security note:** Avoid using `chmod 777` because it unnecessarily allows every user to modify the executable.
 
-### Step 7: Verify XGraph
+### Step 6: Verify XGraph
 
 Run:
 
